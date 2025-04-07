@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Veículo e Dados Pessoais</title>
+  <style>
+    /* Estilos básicos para a página */
+    body {
+      font-family: Arial, sans-serif;
+      background: #00195e;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #00195e;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    button:hover {
+      background: #282f8b;
+    }
+    #report {
+      width: 100%;
+      height: 150px;
+      margin-top: 10px;
+      padding: 8px;
+      box-sizing: border-box;
+      resize: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Cadastro de Veículo e Dados Pessoais</h1>
+    <form id="form-cadastro">
+      <div class="form-group">
+        <label for="carro"><b>Carro:</b></label>
+        <input type="text" id="carro" name="carro" required>
+      </div>
+      <div class="form-group">
+        <label for="placa"><b>Placa:</b></label>
+        <input type="text" id="placa" name="placa" required>
+      </div>
+      <div class="form-group">
+        <label for="renavan"><b>Renavan</b></label>
+        <input type="text" id="renavan" name="renavan" required>
+      </div>
+      <div class="form-group">
+        <label for="chassi"><b>Chassi:</b></label>
+        <input type="text" id="chassi" name="chassi" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="nome"><b>Nome Completo:</b></label>
+        <input type="text" id="nome" name="nome" required>
+      </div>
+      <div class="form-group">
+        <label for="cpf"><b>CPF:</b></label>
+        <input type="text" id="cpf" name="cpf" required>
+      </div>
+      <div class="form-group">
+        <label for="rg"><b>RG:</b></label>
+        <input type="text" id="rg" name="rg" required>
+      </div>
+      <div class="form-group">
+        <label for="cep"><b>CEP:</b></label>
+        <input type="text" id="cep" name="cep" required>
+      </div>
+      <div class="form-group">
+        <label for="endereco"><b>Endereço:</b></label>
+        <input type="text" id="endereco" name="endereco" required>
+      </div>
+      <div class="form-group">
+        <label for="bairro"><b>Bairro:</b></label>
+        <input type="text" id="bairro" name="bairro" required>
+      </div>
+      <div class="form-group">
+        <label for="cidade"><b>Cidade:</b></label>
+        <input type="text" id="cidade" name="cidade" required>
+      </div>
+      <div class="form-group">
+        <label for="email"><b>E-mail:</b></label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="telefone"><b>Telefone:</b></label>
+        <input type="tel" id="telefone" name="telefone" required>
+      </div>
+      <button type="button" id="generateReport">Gerar Relatório</button>
+    </form>
+    
+    <!-- Área onde o relatório será exibido -->
+    <textarea id="report" readonly placeholder="O relatório aparecerá aqui..."></textarea>
+    <button type="button" id="copyReport">Copiar Texto do Relatório</button>
+  </div>
+
+  <script>
+    // Função para gerar o relatório com todas as informações
+    document.getElementById('generateReport').addEventListener('click', function() {
+      // Coleta dos dados dos campos
+      const carro = document.getElementById('carro').value;
+      const renavan = document.getElementById('renavan').value;
+      const chassi = document.getElementById('chassi').value;
+      const placa = document.getElementById('placa').value;
+      const nome = document.getElementById('nome').value;
+      const cpf = document.getElementById('cpf').value;
+      const rg = document.getElementById('rg').value;
+      const cep = document.getElementById('cep').value;
+      const endereco = document.getElementById('endereco').value;
+      const bairro = document.getElementById('bairro').value;
+      const cidade = document.getElementById('cidade').value;
+      const email = document.getElementById('email').value;
+      const telefone = document.getElementById('telefone').value;
+      
+      // Monta a mensagem de relatório com formatação adequada (pode ser adaptada para WhatsApp)
+      const reportText = `*Dados para preenchimento de ATPV: *\n\n` +
+        `Carro: ${carro}\n` +
+        `Placa: ${placa}\n` +
+        `Renavan: ${renavan}\n` +
+        `Chassi: ${chassi}\n` +
+        `Nome Completo: ${nome}\n` +
+        `CPF: ${cpf}\n` +
+        `RG: ${rg}\n` +
+        `CEP: ${cep}\n` +
+        `Endereço: ${endereco}\n` +
+        `Bairro: ${bairro}\n` +
+        `Cidade: ${cidade}\n` +
+        `E-mail: ${email}\n` +
+        `Telefone: ${telefone}\n\n` +
+        '*Favor enviar foto da Habilitação e do comprovante de endereço do cliente*';
+      
+      // Exibe o relatório na textarea
+      document.getElementById('report').value = reportText;
+    });
+
+    // Função para copiar o relatório para a área de transferência
+    document.getElementById('copyReport').addEventListener('click', function() {
+      const reportTextArea = document.getElementById('report');
+      // Seleciona o conteúdo do textarea
+      reportTextArea.select();
+      reportTextArea.setSelectionRange(0, 99999); // Para dispositivos móveis
+
+      // Tenta copiar o conteúdo utilizando o comando 'copy'
+      try {
+        document.execCommand('copy');
+        alert('Relatório copiado para a área de transferência!');
+      } catch (err) {
+        alert('Não foi possível copiar o relatório. Tente novamente.');
+      }
+    });
+  </script>
+</body>
+</html>
