@@ -73,8 +73,8 @@
         <input type="text" id="placa" name="placa" required>
       </div>
       <div class="form-group">
-        <label for="renavan"><b>Renavan</b></label>
-        <input type="text" id="renavan" name="renavan" required>
+        <label for="renavan"><b>Renavam</b></label>
+        <input type="text" id="renavam" name="renavam" required>
       </div>
       <div class="form-group">
         <label for="chassi"><b>Chassi:</b></label>
@@ -130,7 +130,7 @@
     document.getElementById('generateReport').addEventListener('click', function() {
       // Coleta dos dados dos campos
       const carro = document.getElementById('carro').value;
-      const renavan = document.getElementById('renavan').value;
+      const renavan = document.getElementById('renavam').value;
       const chassi = document.getElementById('chassi').value;
       const placa = document.getElementById('placa').value;
       const nome = document.getElementById('nome').value;
@@ -147,7 +147,7 @@
       const reportText = `*Dados para preenchimento de ATPV*: \n\n` +
         `Veículo: ${carro}\n` +
         `Placa: ${placa}\n` +
-        `Renavan: ${renavan}\n` +
+        `Renavam: ${renavam}\n` +
         `Chassi: ${chassi}\n` +
         `Nome Completo: ${nome}\n` +
         `CPF: ${cpf}\n` +
